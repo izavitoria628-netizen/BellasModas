@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BelasModas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap">
+<style>
+:root{--rose:#e8899a;--rose-d:#c9586d;--rose-l:#fbe3e7;--bg:#fff;--tx:#2b2b2b;--mut:#777;--line:#eee;--card:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1618;--tx:#f3e9eb;--mut:#b9a9ad;--line:#3a2f32;--card:#261e21;--rose-l:#3a2328}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Montserrat,Arial,sans-serif;font-size:14px}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rose-d);outline-offset:2px}
+.marquee{background:var(--rose);color:#fff;font-size:11px;font-weight:600;overflow:hidden;white-space:nowrap;padding:7px 0}
+.marquee div{display:inline-block;animation:mq 30s linear infinite}
+.marquee span{margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee div{animation:none}}
+header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding:18px 5%}
+.search{display:flex;max-width:260px}
+.search input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);color:var(--tx);padding:9px 12px;font:inherit;font-size:12px}
+.search button{border:0;background:var(--rose-l);color:var(--rose-d);padding:0 12px}
+.logo{font-family:'Playfair Display',serif;font-style:italic;font-size:30px;color:var(--rose-d);border:1px solid var(--rose);padding:4px 18px;text-align:center;line-height:1.1}
+.logo small{display:block;font:500 8px Montserrat;letter-spacing:.35em;color:var(--rose)}
+.acts{display:flex;gap:16px;justify-content:flex-end;font-size:11px}
+.acts button{background:none;border:0;color:var(--tx);display:flex;align-items:center;gap:8px;text-align:left;padding:0}
+.ic{width:30px;height:30px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+nav{display:flex;gap:28px;padding:0 5% 14px;font-size:11px;font-weight:600}
+nav a,nav>button,.dd>button{color:var(--rose-d);text-decoration:none;background:none;border:0;padding:0;font:inherit;font-weight:600;font-size:11px;cursor:pointer}
+.dd{position:relative}.menu{display:none;position:absolute;top:100%;left:0;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:6px;z-index:5;min-width:160px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.12)}.dd.open .menu{display:block}.menu button{display:block;width:100%;text-align:left;padding:8px 10px;font-size:12px;font-weight:500;color:var(--tx)}.menu button:hover{background:var(--rose-l)}
+.ph{overflow:hidden}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ct{padding:34px 5%;text-align:center;border-top:1px solid var(--line)}.ct h2{margin:0 0 10px}.ct p{color:var(--mut);margin:4px 0}.ct .l{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}.ct a{text-decoration:none;display:inline-block}
+.hero{display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;min-height:260px;border-top:1px solid var(--line);overflow:hidden;background:var(--bg)}
+.hero .side{height:100%;min-height:220px;background:linear-gradient(160deg,#c82a2a,#8f1a1a);border-radius:0 120px 0 0}
+.hero .side.r{background:linear-gradient(160deg,#f4efe9,#d9cfc4);border-radius:120px 0 0 0}
+.hero .mid{text-align:center;padding:24px 10px}
+.hero .mid p{margin:0;font-size:12px;color:var(--mut)}
+.hero h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;font-size:clamp(34px,6vw,58px);margin:8px 0 18px}
+.btn{background:var(--rose);color:#fff;border:0;border-radius:20px;padding:11px 26px;font-weight:700;font-size:13px}
+.btn:hover{background:var(--rose-d)}
+.feat{background:var(--rose);color:#fff;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:34px 5%;text-align:center}
+.feat b{display:block;font-size:13px;margin:8px 0 4px}
+.feat span{font-size:10px;opacity:.9}
+.feat i{font-style:normal;font-size:22px}
+.sec{padding:28px 5%}
+.sec h2{font-size:14px;margin:0 0 14px}
+.admbar{background:var(--rose-l);padding:8px 5%;font-size:12px;display:none;gap:12px;align-items:center}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.card{flex:0 0 210px;scroll-snap-align:start;font-size:11px}
+.ph{height:250px;display:grid;place-items:center;font-size:64px;background:linear-gradient(170deg,var(--c1),var(--c2));margin-bottom:8px}
+.card s{color:var(--mut);display:block;font-size:10px}
+.card .pr{font-weight:700;font-size:13px}
+.card .off{color:#3a9a5b;font-size:10px;margin-left:4px}
+.card .st{color:#d68a1c;font-size:10px;margin:2px 0 6px}
+.card button{background:var(--rose);border:0;color:#fff;font-size:10px;font-weight:600;padding:4px 12px;border-radius:3px}
+.card .ad{display:none;gap:4px;margin-top:6px}
+.card .ad button{background:var(--rose-l);color:var(--rose-d)}
+.adm .ad{display:flex}.adm .admbar{display:flex}
+.band{background:var(--rose);color:#fff;text-align:center;font-weight:700;font-size:20px;padding:34px 5%}
+footer{padding:18px 5%;text-align:center;font-size:11px;color:var(--mut)}
+dialog{border:0;border-radius:10px;padding:22px;width:min(92vw,400px);background:var(--card);color:var(--tx)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 12px}
+label{display:block;font-size:12px;margin:8px 0 3px}
+input,select{width:100%;padding:9px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit;border-radius:4px}
+.tabs{display:flex;gap:6px;margin-bottom:8px}
+.tabs button{flex:1;padding:8px;border:1px solid var(--rose);background:none;color:var(--rose-d);border-radius:4px}
+.tabs .on{background:var(--rose);color:#fff}
+.row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;gap:8px}
+.row button{background:none;border:1px solid var(--line);color:var(--tx);width:24px;height:24px;border-radius:50%}
+.x{float:right;background:none;border:0;font-size:20px;color:var(--mut)}
+.msg{margin:0 0 10px;font-size:12px;color:var(--rose-d);min-height:14px}
+.chatb{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:52px;height:52px;border-radius:50%;background:var(--rose-d);color:#fff;border:0;font-size:22px;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+#log{height:220px;overflow-y:auto;border:1px solid var(--line);padding:8px;margin-bottom:8px;display:flex;flex-direction:column;gap:6px}
+#log p{margin:0;padding:6px 10px;border-radius:12px;max-width:80%;font-size:12px;background:var(--rose-l)}
+#log p.me{align-self:flex-end;background:var(--rose);color:#fff}
+@media (max-width:760px){header{grid-template-columns:1fr 1fr}.logo{grid-row:1;grid-column:1/3;justify-self:center}.hero{grid-template-columns:.6fr 2fr .6fr}.feat{grid-template-columns:1fr 1fr}.acts span{display:none}}
+</style>
+</head>
+<body>
+<div class="marquee"><div id="mq"></div></div>
+
+<header>
+  <form class="search" onsubmit="event.preventDefault();busca()"><input id="q" placeholder="O que você está buscando?" aria-label="Buscar"><button aria-label="Buscar">🔍</button></form>
+  <div class="logo">BelasModas<small>STORE</small></div>
+  <div class="acts">
+    <button onclick="abrirLogin()"><span class="ic">👤</span><span id="usr">Login /<br>Cadastre-se</span></button>
+    <button onclick="abrirCarrinho()"><span class="ic">🛍</span><span>Carrinho (<b id="cn">0</b>)<br><b id="ct">R$0,00</b></span></button>
+  </div>
+</header>
+<nav>
+  <div class="dd" id="dd"><button onclick="toggleCat(event)" aria-haspopup="true">Categorias ⌄</button>
+    <div class="menu"><button onclick="filtra(null)">Todas</button><button onclick="filtra('Vestidos')">Vestidos</button><button onclick="filtra('Conjuntos')">Conjuntos</button><button onclick="filtra('Calçados')">Calçados</button><button onclick="filtra('Blusas')">Blusas</button><button onclick="filtra('Saias')">Saias</button><button onclick="filtra('Bolsas')">Bolsas</button><button onclick="filtra('Acessórios')">Acessórios</button></div></div>
+  <button onclick="irInicio()">Início</button><button onclick="irProdutos()">Produtos</button><button onclick="irContato()">Contato</button>
+</nav>
+
+<section class="hero">
+  <div class="side"></div>
+  <div class="mid"><p>@belasmodas</p><h1>Seja bem-vinda!</h1><p style="margin-bottom:14px">Sua primeira vez aqui?</p><button class="btn" onclick="document.getElementById('prod').scrollIntoView({behavior:'smooth'})">CONFIRA AQUI</button></div>
+  <div class="side r"></div>
+</section>
+
+<section class="feat">
+  <div><i>🚚</i><b>Enviamos para todo o Brasil!</b><span>Receba no conforto da sua casa</span></div>
+  <div><i>💳</i><b>Parcele suas compras!</b><span>Aceitamos Pix, cartão e boleto</span></div>
+  <div><i>🛡</i><b>Compra 100% segura!</b><span>Seus dados estão protegidos</span></div>
+  <div><i>💬</i><b>Ficou alguma dúvida?</b><span>Fale com a gente no chat</span></div>
+</section>
+
+<div class="admbar"><b>Modo administrador</b><button class="btn" style="padding:6px 14px;font-size:11px" onclick="addProd()">+ Novo produto</button></div>
+<section class="sec" id="prod">
+  <h2 id="ttl">♡ OS MAIS VENDIDOS DA LOJA ♡</h2>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px"><button class="btn" style="padding:4px 14px" onclick="rola(-1)" aria-label="Anterior">←</button><button class="btn" style="padding:4px 14px" onclick="rola(1)" aria-label="Próximo">→</button></div>
+  <div class="car" id="car"></div>
+</section>
+
+<div class="band">Você é seu maior investimento!</div>
+<section class="ct" id="contato" tabindex="-1">
+  <h2>Contato</h2>
+  <p>Atendimento de segunda a sábado, das 9h às 18h.</p>
+  <p>contato@belasmodas.com</p>
+  <div class="l"><a class="btn" href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a><a class="btn" href="mailto:contato@belasmodas.com">E-mail</a><button class="btn" onclick="abrirChat()">Falar no chat</button></div>
+</section>
+<footer>© BelasModas · Enviamos para todo o Brasil</footer>
+
+<button class="chatb" onclick="abrirChat()" aria-label="Abrir chat">💬</button>
+
+<dialog id="dLogin">
+  <button class="x" onclick="dLogin.close()" aria-label="Fechar">×</button>
+  <h3>Sua conta</h3>
+  <div class="tabs"><button id="tE" class="on" onclick="aba('E')">Entrar</button><button id="tC" onclick="aba('C')">Cadastrar</button></div>
+  <div id="fNome" hidden><label for="nome">Nome</label><input id="nome"></div>
+  <label for="email">E-mail</label><input id="email" type="email">
+  <label for="senha">Senha</label><input id="senha" type="password">
+  <div id="fTipo" hidden><label for="tipo">Tipo de conta</label><select id="tipo"><option value="cliente">Cliente</option><option value="admin">Administrador</option></select></div>
+  <p class="msg" id="lm"></p>
+  <button class="btn" style="width:100%" onclick="enviarLogin()" id="lb">Entrar</button>
+  <p style="font-size:10px;color:var(--mut)">Demo: admin@belasmodas.com / admin123</p>
+</dialog>
+
+<dialog id="dCart">
+  <button class="x" onclick="dCart.close()" aria-label="Fechar">×</button>
+  <h3>Seu carrinho</h3>
+  <div id="items"></div>
+  <p style="text-align:right;font-weight:700">Total: <span id="tot">R$0,00</span></p>
+  <button class="btn" style="width:100%" onclick="comprar()">Comprar</button>
+</dialog>
+
+<dialog id="dPay">
+  <button class="x" onclick="dPay.close()" aria-label="Fechar">×</button>
+  <h3>Pagamento e entrega</h3>
+  <label for="pn">Nome completo</label><input id="pn">
+  <label for="pe">Endereço (rua e número)</label><input id="pe">
+  <label for="pc">Cidade / UF</label><input id="pc">
+  <label for="pz">CEP</label><input id="pz" inputmode="numeric">
+  <label for="pf">Forma de pagamento</label>
+  <select id="pf"><option>Pix</option><option>Cartão de crédito</option><option>Boleto</option></select>
+  <p class="msg" id="pm"></p>
+  <button class="btn" style="width:100%" onclick="finalizar()">Finalizar pedido</button>
+</dialog>
+
+<dialog id="dProd">
+  <button class="x" onclick="dProd.close()" aria-label="Fechar">×</button>
+  <h3 id="ptit">Novo produto</h3>
+  <label for="fn">Nome</label><input id="fn">
+  <label for="fc">Categoria</label><select id="fc"><option>Vestidos</option><option>Conjuntos</option><option>Calçados</option><option>Blusas</option><option>Saias</option><option>Bolsas</option><option>Acessórios</option></select>
+  <label for="fo">Preço original (R$)</label><input id="fo" inputmode="decimal">
+  <label for="fp">Preço de venda (R$)</label><input id="fp" inputmode="decimal">
+  <label for="fe">Estoque</label><input id="fe" type="number" min="0">
+  <label for="fu">URL da foto</label><input id="fu" type="url" placeholder="https://.../foto.jpg">
+  <p class="msg" id="fm"></p>
+  <button class="btn" style="width:100%" onclick="salvarProd()">Salvar produto</button>
+</dialog>
+
+<dialog id="dChat">
+  <button class="x" onclick="dChat.close()" aria-label="Fechar">×</button>
+  <h3>Chat com a loja</h3>
+  <div id="log"></div>
+  <div style="display:flex;gap:6px"><input id="cm" placeholder="Digite sua mensagem" onkeydown="if(event.key==='Enter')enviarChat()"><button class="btn" style="padding:0 16px" onclick="enviarChat()">Enviar</button></div>
+</dialog>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var brl=function(n){return 'R$'+n.toFixed(2).replace('.',',')};
+var cores=[['#f3e6dc','#d9b9a0'],['#f0d7c4','#c99a78'],['#e8ddd0','#b8a48e'],['#f7dfe6','#e3a9b8']];
+var emo=['👗','👚','👡','👠'];
+var prods=ld('bm_prods',[
+ {id:1,n:'Vestido longo Caracol',c:'Vestidos',img:'',o:179.9,p:136.72,e:3},
+ {id:2,n:'Conjunto Lauanne',c:'Conjuntos',img:'',o:159.9,p:121.52,e:2},
+ {id:3,n:'Papete amelar',c:'Calçados',img:'',o:169.9,p:129.12,e:1},
+ {id:4,n:'Vestido Ana',c:'Vestidos',img:'',o:59.9,p:49.9,e:1},
+ {id:5,n:'Vestido Bianca',c:'Vestidos',img:'',o:149.9,p:119.9,e:4},
+ {id:6,n:'Conjunto Alice',c:'Conjuntos',img:'',o:139.9,p:109.9,e:3},
+ {id:7,n:'Sandália rasteira',c:'Calçados',img:'',o:89.9,p:69.9,e:5},
+ {id:8,n:'Conjunto Luna',c:'Conjuntos',img:'',o:129.9,p:99.9,e:2},
+ {id:9,n:'Vestido midi Flor',c:'Vestidos',img:'',o:139.9,p:109.9,e:3},
+ {id:10,n:'Vestido curto Sol',c:'Vestidos',img:'',o:99.9,p:79.9,e:4},
+ {id:11,n:'Conjunto Marina',c:'Conjuntos',img:'',o:149.9,p:119.9,e:2},
+ {id:12,n:'Sandália salto Bella',c:'Calçados',img:'',o:129.9,p:99.9,e:3},
+ {id:13,n:'Blusa cropped Lívia',c:'Blusas',img:'',o:59.9,p:44.9,e:6},
+ {id:14,n:'Blusa manga longa Rosa',c:'Blusas',img:'',o:79.9,p:59.9,e:4},
+ {id:15,n:'Blusa regata Clara',c:'Blusas',img:'',o:49.9,p:39.9,e:5},
+ {id:16,n:'Saia midi Aline',c:'Saias',img:'',o:89.9,p:69.9,e:3},
+ {id:17,n:'Saia plissada Júlia',c:'Saias',img:'',o:99.9,p:79.9,e:2},
+ {id:18,n:'Saia jeans Camila',c:'Saias',img:'',o:109.9,p:84.9,e:1},
+ {id:19,n:'Bolsa tiracolo Maya',c:'Bolsas',img:'',o:119.9,p:89.9,e:3},
+ {id:20,n:'Bolsa de palha Verão',c:'Bolsas',img:'',o:139.9,p:104.9,e:2},
+ {id:21,n:'Colar dourado Estrela',c:'Acessórios',img:'',o:39.9,p:29.9,e:8},
+ {id:22,n:'Brincos pérola',c:'Acessórios',img:'',o:34.9,p:24.9,e:10},
+ {id:23,n:'Lenço de cabelo Flor',c:'Acessórios',img:'',o:24.9,p:17.9,e:7}]);
+var users=ld('bm_users',[{nome:'Administrador',email:'admin@belasmodas.com',senha:'admin123',tipo:'admin'}]);
+var user=ld('bm_user',null), cart=ld('bm_cart',{}), modo='E';
+
+var frase='USE O CUPOM PRIMEIRACOMPRA E GANHE 5% OFF';
+$('mq').innerHTML=Array(16).fill('<span>'+frase+'</span>').join('');
+
+var cat=null;
+function render(f){
+  var t=(f||'').toLowerCase();
+  $('ttl').textContent=cat?'♡ '+cat.toUpperCase()+' ♡':'♡ OS MAIS VENDIDOS DA LOJA ♡';
+  $('car').innerHTML='';
+  prods.forEach(function(p,i){
+    if(t&&p.n.toLowerCase().indexOf(t)<0)return;
+    if(cat&&(p.c||'Outros')!==cat)return;
+    var c=cores[i%4],d=Math.round((1-p.p/p.o)*100),el=document.createElement('div');
+    el.className='card';
+    el.innerHTML='<div class="ph" style="--c1:'+c[0]+';--c2:'+c[1]+'">'+(p.img?'<img alt="">':emo[i%4])+'</div><div></div><s>'+brl(p.o)+'</s><span class="pr">'+brl(p.p)+'</span><span class="off">'+d+'% OFF</span><div class="st"></div><button>Comprar</button><div class="ad"><button data-a="e">Editar</button><button data-a="x">Excluir</button></div>';
+    el.children[1].textContent=p.n;
+    el.querySelector('.st').textContent=p.e>1?'Só restam '+p.e+' em estoque!':'Atenção, última peça!';
+    el.querySelector('button').onclick=function(){add(p.id)};
+    el.querySelector('[data-a=e]').onclick=function(){abrirProd(p.id)};
+    var im=el.querySelector('img');
+    if(im){im.src=p.img;im.onerror=function(){im.parentNode.textContent=emo[i%4]}}
+    el.querySelector('[data-a=x]').onclick=function(){prods=prods.filter(function(x){return x.id!==p.id});sv('bm_prods',prods);render()};
+    $('car').appendChild(el);
+  });
+  if(!$('car').children.length)$('car').textContent='Nenhum produto encontrado.';
+}
+function busca(){render($('q').value)}
+
+/* carrinho */
+function add(id){cart[id]=(cart[id]||0)+1;sv('bm_cart',cart);resumo();abrirCarrinho()}
+function resumo(){
+  var n=0,t=0;
+  prods.forEach(function(p){if(cart[p.id]){n+=cart[p.id];t+=cart[p.id]*p.p}});
+  $('cn').textContent=n;$('ct').textContent=brl(t);$('tot').textContent=brl(t);return n;
+}
+function abrirCarrinho(){
+  var box=$('items');box.innerHTML='';
+  prods.forEach(function(p){
+    var q=cart[p.id];if(!q)return;
+    var r=document.createElement('div');r.className='row';
+    r.innerHTML='<span style="flex:1"></span><button>−</button><b>'+q+'</b><button>+</button><span>'+brl(q*p.p)+'</span>';
+    r.firstChild.textContent=p.n;
+    var b=r.querySelectorAll('button');
+    b[0].onclick=function(){cart[p.id]--;if(!cart[p.id])delete cart[p.id];sv('bm_cart',cart);resumo();abrirCarrinho()};
+    b[1].onclick=function(){cart[p.id]++;sv('bm_cart',cart);resumo();abrirCarrinho()};
+    box.appendChild(r);
+  });
+  if(!box.children.length)box.textContent='Seu carrinho está vazio.';
+  resumo();if(!$('dCart').open)$('dCart').showModal();
+}
+function comprar(){
+  if(!resumo())return;
+  if(!user){$('dCart').close();abrirLogin('Entre ou cadastre-se para finalizar a compra.');return}
+  $('pn').value=user.nome;$('pm').textContent='';$('dCart').close();$('dPay').showModal();
+}
+function finalizar(){
+  if(!$('pn').value||!$('pe').value||!$('pc').value||!$('pz').value){$('pm').textContent='Preencha todos os campos de entrega.';return}
+  cart={};sv('bm_cart',cart);resumo();$('dPay').close();
+  alert('Pedido realizado! Pagamento: '+$('pf').value+'. Entrega em '+$('pe').value+', '+$('pc').value+'.');
+}
+
+/* login */
+function aba(m){
+  modo=m;$('tE').className=m==='E'?'on':'';$('tC').className=m==='C'?'on':'';
+  $('fNome').hidden=$('fTipo').hidden=m==='E';$('lb').textContent=m==='E'?'Entrar':'Criar conta';$('lm').textContent='';
+}
+function abrirLogin(msg){
+  if(user){if(confirm('Olá, '+user.nome+'! Deseja sair?')){user=null;sv('bm_user',null);sessao()}return}
+  aba('E');$('lm').textContent=typeof msg==='string'?msg:'';$('dLogin').showModal();
+}
+function enviarLogin(){
+  var e=$('email').value.trim().toLowerCase(),s=$('senha').value;
+  if(!e||!s){$('lm').textContent='Informe e-mail e senha.';return}
+  if(modo==='C'){
+    if(!$('nome').value.trim()){$('lm').textContent='Informe seu nome.';return}
+    if(users.some(function(u){return u.email===e})){$('lm').textContent='Este e-mail já está cadastrado.';return}
+    /* Demo: em produção, contas de administrador devem ser criadas somente pelo servidor. */
+    var u={nome:$('nome').value.trim(),email:e,senha:s,tipo:$('tipo').value};
+    users.push(u);sv('bm_users',users);user=u;
+  }else{
+    var f=users.filter(function(u){return u.email===e&&u.senha===s})[0];
+    if(!f){$('lm').textContent='E-mail ou senha incorretos.';return}
+    user=f;
+  }
+  sv('bm_user',user);$('dLogin').close();sessao();
+}
+function sessao(){
+  $('usr').innerHTML=user?'Olá,<br>'+user.nome.split(' ')[0].replace(/[<>&]/g,''):'Login /<br>Cadastre-se';
+  document.body.classList.toggle('adm',!!user&&user.tipo==='admin');
+}
+
+/* admin */
+var editId=null;
+function addProd(){abrirProd(null)}
+function abrirProd(id){
+  editId=id;var p=prods.filter(function(x){return x.id===id})[0]||{n:'',c:'Vestidos',o:'',p:'',e:1,img:''};
+  $('ptit').textContent=id?'Editar produto':'Novo produto';
+  $('fn').value=p.n;$('fc').value=p.c||'Vestidos';$('fo').value=p.o;$('fp').value=p.p;$('fe').value=p.e;$('fu').value=p.img||'';
+  $('fm').textContent='';$('dProd').showModal();
+}
+function salvarProd(){
+  var n=$('fn').value.trim(),o=parseFloat(String($('fo').value).replace(',','.')),v=parseFloat(String($('fp').value).replace(',','.')),e=parseInt($('fe').value,10);
+  if(!n||!(v>0)){$('fm').textContent='Informe o nome e o preço de venda.';return}
+  if(!(o>=v))o=v;
+  if(!(e>=0))e=1;
+  var d={n:n,c:$('fc').value,o:o,p:v,e:e,img:$('fu').value.trim()};
+  if(editId){var q=prods.filter(function(x){return x.id===editId})[0];Object.assign(q,d)}
+  else{d.id=Date.now();prods.push(d)}
+  sv('bm_prods',prods);$('dProd').close();render();
+}
+
+function rola(d){$('car').scrollBy({left:d*440,behavior:'smooth'})}
+/* menu */
+function toggleCat(e){e.stopPropagation();$('dd').classList.toggle('open')}
+document.addEventListener('click',function(){$('dd').classList.remove('open')});
+function filtra(c){cat=c;$('q').value='';$('dd').classList.remove('open');render();irProdutos()}
+function irInicio(){cat=null;$('q').value='';render();window.scrollTo({top:0,behavior:'smooth'})}
+function irProdutos(){$('prod').scrollIntoView({behavior:'smooth'})}
+function irContato(){$('contato').scrollIntoView({behavior:'smooth'})}
+
+/* chat */
+var msgs=ld('bm_chat',[{de:'loja',t:'Olá! Como podemos ajudar?'}]);
+function pintaChat(){
+  var l=$('log');l.innerHTML='';
+  msgs.forEach(function(m){var p=document.createElement('p');p.textContent=m.t;if(m.de==='me')p.className='me';l.appendChild(p)});
+  l.scrollTop=l.scrollHeight;
+}
+function abrirChat(){pintaChat();$('dChat').showModal()}
+function enviarChat(){
+  var t=$('cm').value.trim();if(!t)return;
+  msgs.push({de:'me',t:t});$('cm').value='';sv('bm_chat',msgs);pintaChat();
+  setTimeout(function(){msgs.push({de:'loja',t:'Recebemos sua mensagem! Em instantes uma atendente responde.'});sv('bm_chat',msgs);pintaChat()},700);
+}
+
+sessao();render();resumo();
+</script>
+</body>
+</html>
